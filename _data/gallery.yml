@@ -1,0 +1,16 @@
+
+- title: Naruto Poster
+  image: /assets/images/anime-poster1.jpg
+  category: anime
+- title: Demon Slayer Poster
+  image: /assets/images/anime-poster2.jpg
+  category: anime
+- title: Avengers Poster
+  image: /assets/images/movie-poster1.jpg
+  category: movies
+- title: John Wick Poster
+  image: /assets/images/movie-poster2.jpg
+  category: movies
+- title: Laptop Repair
+  image: /assets/images/tech1.jpg
+  category: tech

@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+  <title>index</title>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" rel="stylesheet"/>
+</head>
+<body>
+<a name="1_"></a>
+
+  <header>
+    <h1>Pixon Entertainment</h1>
+    <nav id="nav">
+      <button id="menu-toggle">Menu</button>
+      <ul id="nav-list">
+        <li><a href="#1_">Home</a></li>
+        <li><a href="#1_">About</a></li>
+        <li><a href="#1_">Contact</a></li>
+        <li><a class="snipcart-checkout" href="/">Cart (<span class="snipcart-items-count"></span>)</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!--Product Section -->
+    <section>
+      <h2>USB Flash Drive 32GB</h2>
+      <p>Store your favorite series, anime &amp; files. Only KES 800!</p>
+      <button class="snipcart-add-item" data-item-description="Durable USB storage for your collection." data-item-id="usb-flash-32gb" data-item-name="USB Flash Drive 32GB" data-item-price="800" data-item-url="/">
+        Add to Cart
+      </button>
+    </section>
+
+    <!--Rating Section -->
+    <section class="rating" data-name="USB Flash Drive 32GB">
+      <h3>Rate This Product</h3>
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+      <div class="rating-result"></div>
+    </section>
+
+    <img alt="Description" loading="lazy" src="image.jpg"/>
+  </main>
+
+  <div data-api-key="YOUR_SECURED_SNIPCART_API_KEY" hidden="hidden" id="snipcart"></div>
+  <script async="async" src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+
+  <script type="module">
+    import { initializeApp } from &quot;https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js&quot;;
+    import { getDatabase, ref, onValue, push } from &quot;https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js&quot;;
+
+    const firebaseConfig = {
+      apiKey: &quot;AIzaSyCYGlAe79RQyxVQhXsm1u9tn9FfRcofCew&quot;,
+      authDomain: &quot;pixon-entertainment.firebaseapp.com&quot;,
+      databaseURL: &quot;https://pixon-entertainment-default-rtdb.europe-west1.firebasedatabase.app&quot;,
+      projectId: &quot;pixon-entertainment&quot;,
+      storageBucket: &quot;pixon-entertainment.appspot.com&quot;,
+      messagingSenderId: &quot;955382112584&quot;,
+      appId: &quot;1:955382112584:web:773d7da22707228aeed37d&quot;
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    document.querySelectorAll(&quot;.rating&quot;).forEach(section =&gt; {
+      const item = section.dataset.name;
+      const stars = section.querySelectorAll(&quot;.star&quot;);
+      const result = section.querySelector(&quot;.rating-result&quot;);
+      const ratingsRef = ref(database, &apos;ratings/&apos; + item);
+
+      function updateRating(snapshot) {
+        const values = Object.values(snapshot.val() || {});
+        const avg = values.length ? values.reduce((a, b) =&gt; a + b, 0) / values.length : 0;
+        result.textContent = `Average: ${avg.toFixed(1)} ★ (${values.length} ratings)`;
+      }
+
+      onValue(ratingsRef, updateRating);
+
+      stars.forEach(star =&gt; {
+        star.addEventListener(&quot;click&quot;, () =&gt; {
+          const value = parseInt(star.dataset.value);
+          push(ratingsRef, value);
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.getElementById(&apos;menu-toggle&apos;).addEventListener(&apos;click&apos;, function() {
+      document.getElementById(&apos;nav-list&apos;).classList.toggle(&apos;show&apos;);
+    });
+  </script>
+
+
+<hr/>
+
+
+
+
+
+
+<a name="2_"></a>
+
+  <header>
+    <h1>Pixon Entertainment</h1>
+    <a class="snipcart-checkout" href="#2_">󄠽 Cart (<span class="snipcart-items-count"></span>)</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Buy Now</h2>
+      <button class="snipcart-add-item" data-item-description="32GB Movie-Loaded USB Drive" data-item-id="usb-drive" data-item-name="USB Flash Drive" data-item-price="800" data-item-url="/">
+        Add to Cart
+      </button>
+    </section>
+
+    <section class="rating" data-name="USB Flash Drive">
+      <h3>Rate This Product</h3>
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+      <div class="rating-result"></div>
+    </section>
+
+    <section>
+      <h3>Subscribe to Newsletter</h3>
+      <form action="https://gmail.us1.list-manage.com/subscribe/post?u=afdc2929ad04f8d43dca4a1ea&amp;id=f423bf73d0" method="post" target="_blank">
+        <input name="EMAIL" placeholder="Your email" required="required" type="email"/>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <section>
+      <h3>Submit a Testimonial</h3>
+      <iframe frameborder="0" height="600" marginheight="0" marginwidth="0" src="https://docs.google.com/forms/d/e/1FAIpQLSf_zm4m2Qj3RuFctbJ-g6CYhmT-sbr_jHGzbTIJfk_t-ugXqw/viewform?embedded=true" width="100%">Loading…</iframe>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll(&quot;.rating&quot;).forEach(section =&gt; {
+      const item = section.dataset.name;
+      const stars = section.querySelectorAll(&quot;.star&quot;);
+      const result = section.querySelector(&quot;.rating-result&quot;);
+      const ref = firebase.database().ref(&quot;ratings/&quot; + item);
+
+      function updateRating(snapshot) {
+        const values = Object.values(snapshot.val() || {});
+        const avg = values.length ? values.reduce((a, b) =&gt; a + b, 0) / values.length : 0;
+        result.textContent = `Average: ${avg.toFixed(1)} ★ (${values.length} ratings)`;
+      }
+
+      ref.on(&quot;value&quot;, updateRating);
+
+      stars.forEach(star =&gt; {
+        star.addEventListener(&quot;click&quot;, () =&gt; {
+          const value = parseInt(star.dataset.value);
+          ref.push(value);
+        });
+      });
+    });
+  </script>
+
+
+<hr/>
+
+
+
+
+<!--Snipcart Integration --><!--Firebase Ratings -->
+
+<a name="3_"></a>
+
+  <header class="site-header">
+    <h1>Pixon Entertainment</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/store">Store</a>
+      <a href="/testimonials">Testimonials</a>
+      <a href="/contact">Contact</a>
+      <a class="snipcart-checkout" href="#3_">󄠽 Cart (<span class="snipcart-items-count"></span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Welcome to Pixon Entertainment</h2>
+      <p>Your one-stop hub for movies, anime, gadgets, and tech services in Ruaraka.</p>
+    </section>
+
+    <section class="featured-product">
+      <h3>Featured Product: USB Flash Drive 32GB</h3>
+      <img alt="USB Flash Drive" src="/assets/images/product1.jpg"/>
+      <p>Store your favorite series and files effortlessly. KES 800</p>
+
+      <button class="snipcart-add-item" data-item-description="Durable USB storage for movies and more." data-item-id="usb-flash-32gb" data-item-name="USB Flash Drive 32GB" data-item-price="800" data-item-url="/">
+        Add to Cart
+      </button>
+
+      <div class="rating" data-name="USB Flash Drive 32GB">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+        <span class="rating-result"></span>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <h3>Subscribe to Our Newsletter</h3>
+      <form action="https://gmail.us1.list-manage.com/subscribe/post?u=afdc2929ad04f8d43dca4a1ea&amp;id=f423bf73d0&amp;f_id=004601e0f0" method="post" target="_blank">
+        <input name="EMAIL" placeholder="Your email" required="required" type="email"/>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 Pixon Entertainment. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(&quot;.rating&quot;).forEach(section =&gt; {
+      const item = section.dataset.name;
+      const stars = section.querySelectorAll(&quot;.star&quot;);
+      const result = section.querySelector(&quot;.rating-result&quot;);
+      const ref = firebase.database().ref(&quot;ratings/&quot; + item);
+
+      function updateRating(snapshot) {
+        const values = Object.values(snapshot.val() || {});
+        const avg = values.length ? values.reduce((a, b) =&gt; a + b, 0) / values.length : 0;
+        result.textContent = `Average: ${avg.toFixed(1)} ★ (${values.length} ratings)`;
+      }
+
+      ref.on(&quot;value&quot;, updateRating);
+
+      stars.forEach(star =&gt; {
+        star.addEventListener(&quot;click&quot;, () =&gt; {
+          const value = parseInt(star.dataset.value);
+          ref.push(value);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

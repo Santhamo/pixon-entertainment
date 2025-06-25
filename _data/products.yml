@@ -1,0 +1,9 @@
+
+- name: USB Flash Drive 32GB
+  image: /assets/images/product1.jpg
+  price: KES 800
+  description: Durable and fast storage for your movies.
+- name: Anime Hoodie
+  image: /assets/images/product2.jpg
+  price: KES 2000
+  description: Stylish and warm for anime lovers.

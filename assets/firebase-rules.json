@@ -1,0 +1,14 @@
+
+{
+  "rules": {
+    ".read": true,
+    ".write": "auth == null",
+    "ratings": {
+      "$item": {
+        ".read": true,
+        ".write": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5",
+        ".validate": "newData.isNumber()"
+      }
+    }
+  }
+}
